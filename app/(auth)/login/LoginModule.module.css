@@ -1,0 +1,16 @@
+.formContainer {
+  @apply relative bg-slate-700 p-6 w-full h-[600px]; /* 너비와 높이 조정 */
+}
+
+.formContainer::before,
+.formContainer::after {
+  @apply content-[''] absolute -top-1/2 -left-1/2 w-full max-w-screen-lg h-[600px] origin-bottom-right bg-gradient-to-t from-transparent via-fuchsia-400 animate-animateBorder; /* 애니메이션 크기 조정 */
+}
+
+.formContainer::after {
+  animation-delay: -5s;
+}
+
+.inputBox {
+  @apply relative mt-8 w-full;
+}
