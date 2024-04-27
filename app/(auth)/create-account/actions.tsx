@@ -58,9 +58,8 @@ const formSchema = z
         code: "custom",
         message: "This username is already taken",
         path: ["username"],
-        // 에러를 보여줄 경로를 설정
+
         fatal: true,
-        // 치명적인 오류가 있다고 설정
       });
       return z.NEVER;
     }

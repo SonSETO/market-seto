@@ -58,12 +58,12 @@ export async function login(prevState: any, formData: FormData) {
       result.data.password,
       user!.password ?? "xxx"
     );
-    // if the user is found => check password hash
+
     if (ok) {
       const session = await getSession();
       session.id = user!.id;
       await session.save();
-      // log the user in
+
       redirect("/profile");
     } else {
       return {

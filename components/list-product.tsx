@@ -16,7 +16,7 @@ interface ListProductProps {
     username: string;
     id: number;
   };
-  isLikedByUser: boolean; // 좋아요 상태 추가
+  isLikedByUser: boolean;
 }
 
 export default function ListProduct({
@@ -25,7 +25,7 @@ export default function ListProduct({
   photo,
   id,
   user,
-  isLikedByUser, // 좋아요 상태 추가
+  isLikedByUser,
 }: ListProductProps) {
   const [isLiked, setIsLiked] = useState(isLikedByUser);
 
@@ -83,3 +83,5 @@ export default function ListProduct({
     </div>
   );
 }
+
+// 좋아요가 제대로 구동이 되질 않음 db에 안박히는 중 이유는 모르겠으니 천천히 체크

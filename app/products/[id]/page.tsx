@@ -81,12 +81,6 @@ export default async function ProductDetail({
 
       <div className="fixed bottom-0 left-0 flex w-full items-center justify-between bg-neutral-800 p-5 pb-10">
         {isOwner ? <ProductDeleteButton productId={product.id} /> : null}
-        {/* <Link
-          href={``}
-          className="rounded-md bg-orange-500 px-5 py-2.5 font-semibold text-white"
-        >
-          채팅하기
-        </Link> */}
       </div>
     </div>
   );

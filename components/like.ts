@@ -10,7 +10,6 @@ export default async function handler(
     const { userId, productId } = req.body;
 
     try {
-      // 사용자가 해당 제품에 좋아요를 눌렀는지 확인
       const existingLike = await db.like.findFirst({
         where: {
           userId,
@@ -19,7 +18,6 @@ export default async function handler(
       });
 
       if (existingLike) {
-        // 이미 좋아요를 눌렀으면 좋아요 취소
         await db.like.delete({
           where: {
             id: existingLike.id,
@@ -27,7 +25,6 @@ export default async function handler(
         });
         res.status(200).json({ message: "좋아요 취소됨", likeChanged: false });
       } else {
-        // 좋아요 추가
         await db.like.create({
           data: {
             userId,
@@ -44,3 +41,5 @@ export default async function handler(
     res.status(405).json({ error: "Method not allowed" });
   }
 }
+
+// 좋아요가 제대로 구동이 되질 않음 db에 안박히는 중 이유는 모르겠으니 천천히 체크

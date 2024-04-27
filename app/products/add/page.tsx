@@ -9,8 +9,8 @@ import { useFormState } from "react-hook-form";
 
 export default function AddProduct() {
   const [preview, setPreview] = useState("");
-  const [isImageUploaded, setIsImageUploaded] = useState(false); // 이미지 업로드 여부 상태
-  const [isValidSize, setIsValidSize] = useState(true); // 이미지 사이즈 유효성 상태
+  const [isImageUploaded, setIsImageUploaded] = useState(false);
+  const [isValidSize, setIsValidSize] = useState(true);
 
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -22,24 +22,22 @@ export default function AddProduct() {
     const file = files[0];
     const url = URL.createObjectURL(file);
     setPreview(url);
-    setIsImageUploaded(true); // 이미지 업로드 상태를 true로 설정
-    // 이미지 사이즈가 유효한지 확인
+    setIsImageUploaded(true);
+
     if (file.size > 4 * 1024 * 1024) {
-      // 3-4MB 이하인지 확인 (4MB를 넘어가면 너무 큰 이미지로 간주)
-      setIsValidSize(false); // 이미지 사이즈가 유효하지 않으면 상태를 false로 설정
+      setIsValidSize(false);
     } else {
-      setIsValidSize(true); // 이미지 사이즈가 유효하면 상태를 true로 설정
+      setIsValidSize(true);
     }
   };
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // 이미지가 업로드되었고, 이미지 사이즈가 유효한 경우에만 제품을 업로드
+
     if (isImageUploaded && isValidSize) {
       const formData = new FormData(event.currentTarget);
-      uploadProduct(formData); // 제품 업로드 함수 호출
+      uploadProduct(formData);
     } else {
-      // 이미지가 업로드되지 않았거나 이미지 사이즈가 유효하지 않은 경우 오류 메시지를 표시
       alert("이미지를 업로드하거나 이미지 크기를 확인하세요.");
     }
   };
