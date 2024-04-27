@@ -26,7 +26,7 @@ export default function ProductDeleteButton({ productId }: Props) {
       className="rounded-md bg-red-500 px-5 py-2.5 font-semibold text-white"
       onClick={handleDelete}
     >
-      Delete product
+      삭제하기
     </button>
   );
 }

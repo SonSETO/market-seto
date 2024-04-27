@@ -1,4 +1,4 @@
-// ListProduct.tsx
+"use client";
 
 import { useState } from "react";
 import { HeartIcon } from "@heroicons/react/24/outline";
@@ -31,7 +31,7 @@ export default function ListProduct({
 
   const toggleLike = async () => {
     try {
-      const response = await fetch("/api/like", {
+      const response = await fetch(`/products/like`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,4 @@
 "use server";
-
 import db from "@/lib/db";
 import { NextApiRequest, NextApiResponse } from "next";
 
