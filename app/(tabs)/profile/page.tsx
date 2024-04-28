@@ -9,7 +9,7 @@ interface UsernameProps {
 }
 
 function Username({ username }: UsernameProps) {
-  return <h1>Welcome! {username}!</h1>;
+  return <h1>Welcome {username}</h1>;
 }
 
 async function getAllProducts(id: number) {
@@ -56,14 +56,21 @@ export default async function Profile() {
     redirect("/");
   }
   return (
-    <div>
-      <Suspense fallback={"Welcome!"}>
-        <Username username={user?.username ?? ""} />
-      </Suspense>
-      <form className="flex right-0" action={logOut}>
-        <button>Log out</button>
+    <div className="flex flex-col gap-5">
+      <div className="flex flex-col justify-center items-center font-semibold text-[50px]">
+        <Suspense fallback={"Welcome"}>
+          <Username username={user?.username ?? ""} />
+        </Suspense>
+      </div>
+      <form
+        action={logOut}
+        className="flex flex-col justify-center items-center "
+      >
+        <button className="my-[30px] text-white transition-colors duration-300 hover:text-red-500 hover:scale-105">
+          Log out
+        </button>
       </form>
-      <div className="w-full h-[60%] overflow-y-scroll   pb-10">
+      <div className="w-full h-[60%] overflow-y-scroll pb-10 mb-[10px]">
         {myprofile.map((product) => (
           <ListProduct isLikedByUser={false} key={product.id} {...product} />
         ))}
