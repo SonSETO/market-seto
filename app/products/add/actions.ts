@@ -24,12 +24,12 @@ export async function uploadProduct(formData: FormData) {
     title: formData.get("title"),
     description: formData.get("description"),
   };
-  if (data.photo instanceof File) {
-    // 일단 테스트를 위해 작성 이건 실제로 안 쓰일거임
-    const photoData = await data.photo.arrayBuffer();
-    await fs.appendFile(`./public/${data.photo.name}`, Buffer.from(photoData));
-    data.photo = `/${data.photo.name}`;
-  }
+  // if (data.photo instanceof File) {
+  //   // 일단 테스트를 위해 작성 이건 실제로 안 쓰일거임
+  //   const photoData = await data.photo.arrayBuffer();
+  //   await fs.appendFile(`./public/${data.photo.name}`, Buffer.from(photoData));
+  //   data.photo = `/${data.photo.name}`;
+  // }
   const results = productSchema.safeParse(data);
   if (!results.success) {
     return results.error.flatten();
